@@ -1,12 +1,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:maven_rules.bzl", "maven_aar")
 
-rules_kotlin_version = "87bd13f91d166a8070e9bbfbb0861f6f76435e7a" # How to check for lastest rules version?
+RULES_KOTLIN_VERSION = "cab5eaffc2012dfe46260c03d6419c0d2fa10be0" # How to check for latest rules version?
 http_archive(
     name = "io_bazel_rules_kotlin",
-    urls = ["https://github.com/bazelbuild/rules_kotlin/archive/%s.zip" % rules_kotlin_version],
+    urls = ["https://github.com/bazelbuild/rules_kotlin/archive/%s.zip" % RULES_KOTLIN_VERSION],
     type = "zip",
-    strip_prefix = "rules_kotlin-%s" % rules_kotlin_version
+    strip_prefix = "rules_kotlin-%s" % RULES_KOTLIN_VERSION
 )
 
 load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kotlin_repositories", "kt_register_toolchains")
@@ -19,6 +19,7 @@ http_archive(
     name = "gmaven_rules",
     strip_prefix = "gmaven_rules-%s" % GMAVEN_TAG,
     url = "https://github.com/bazelbuild/gmaven_rules/archive/%s.tar.gz" % GMAVEN_TAG,
+    sha256 = "33027de68db6a49a352f83808fa9898c4930d39aa6fb0edc6bb3d3eec6e2bc7d",
 )
 
 load("@gmaven_rules//:gmaven.bzl", "gmaven_rules")
@@ -28,8 +29,8 @@ android_sdk_repository(name = "androidsdk")
 
 maven_jar(
     name = "com_squareup_okhttp3_okhttp",
-    artifact = "com.squareup.okhttp3:okhttp:3.12.0",
-    sha1 = "b36f4a04584c0fb0d9af2d3401cdff8dacb1ea54",
+    artifact = "com.squareup.okhttp3:okhttp:3.12.1",
+    sha1 = "dc6d02e4e68514eff5631963e28ca7742ac69efe",
 )
 
 maven_jar(
