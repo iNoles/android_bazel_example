@@ -1,4 +1,5 @@
-load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_jvm_library", "kt_android_library")
+load("@io_bazel_rules_kotlin//kotlin:kotlin.bzl", "kt_android_library")
+load("@rules_jvm_external//:defs.bzl", "artifact")
 
 PACKAGE = "com.example.bazel"
 MANIFEST = "AndroidManifest.xml"
@@ -21,13 +22,13 @@ kt_android_library(
     manifest = MANIFEST,
     resource_files = glob(["res/**/*"]),
     deps = [
-        "@com_squareup_okhttp3_okhttp//jar",
-        "@com_squareup_okio_okio//jar",
-        "@io_reactivex_rxjava2_rxjava2//jar",
-        "@org_reactivestreams_reactive_streams//jar",
-        "@io_reactivex_rxjava2_rxandroid//aar",
+        artifact("com.squareup.okhttp3:okhttp"),
+        artifact("io.reactivex.rxjava2:rxjava"),
+        artifact("io.reactivex.rxjava2:rxandroid"),
 
-        "@androidx_recyclerview_recyclerview_1_0_0//aar",
-        "@androidx_core_core_1_0_1//aar",
-    ]  
+        artifact("androidx.core:core:aar"),
+        artifact("androidx.recyclerview:recyclerview"),
+
+        artifact("org.reactivestreams:reactive-streams")
+    ],
 )
