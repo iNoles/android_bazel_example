@@ -23,6 +23,7 @@ kt_android_library(
     resource_files = glob(["res/**/*"]),
     deps = [
         artifact("com.squareup.okhttp3:okhttp"),
+        artifact("androidx.appcompat:appcompat"),
         artifact("io.reactivex.rxjava2:rxjava"),
         artifact("io.reactivex.rxjava2:rxandroid"),
 
